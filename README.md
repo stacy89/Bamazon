@@ -4,7 +4,7 @@ Bamazon is a mini verison of amazon. A user can see what items are available and
 
 ## Getting Started
 
-![Bamazon Demo](Bamazon/demoClips/BazazonClip.gif)
+![Bamazon](demoClips/BamazonCip.gif)
 
 ### Installing
 
