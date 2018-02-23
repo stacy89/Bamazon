@@ -4,7 +4,7 @@ Bamazon is a mini verison of amazon. A user can see what items are available and
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine.
+[!(destop/BazazonClip.m4v)]
 
 ### Installing
 

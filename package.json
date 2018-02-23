@@ -4,8 +4,9 @@
   "description": "",
   "main": "bamazonCustomer.js",
   "dependencies": {
-    "colors": "^1.1.2",
     "cli-table": "^0.3.1",
+    "colors": "^1.1.2",
+    "inquirer": "^5.1.0",
     "mysql": "^2.15.0",
     "prompt": "^1.0.0"
   },
