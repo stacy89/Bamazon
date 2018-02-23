@@ -47,60 +47,60 @@ function runProgram(){
 				message: "How many of these would you like to purchase?"
 			}	
 		]).then(function(userPurchase) {
-			console.log(userPurchase);
 
 			connection.query("SELECT * FROM products WHERE id=?", userPurchase.item, function(err, res) {
-				for (var i = 0; i < res.length; i++) {
-				console.log(res[i]);
-			}
-				console.log(userPurchase.quantity);
-				console.log(res.RowDataPacket.stock_quantity);
 
-				if (userPurchase.quantity > res.stock_quantity) {
+				if (userPurchase.quantity > res[0].stock_quantity) {
 					console.log("Insufficient quantity! Please try again later.");
 					runProgram();
 				} else {
-					var itemQuantity = parseFloat(userPurchase.quantity);
-					console.log(itemQuantity)
-					// res.stock_quantity - userPurchase.quantity;
-					// var total = res.price * userPurchase.quantity;
-					// console.log("You total is " + total);
+					var newStockQuantity = res[0].stock_quantity - userPurchase.quantity;
+
+					var total = res[0].price * userPurchase.quantity;
+
+					console.log("You total is " + total);
+					updateItem(newStockQuantity, userPurchase.id);
 				}
 			});
 		});
+};
 
+function updateItem(newStockQuantity, itemId) {
+	inquirer
+		.prompt ([
+			{
+				name: "comfirm", 
+				type: "input",
+				message: "Are you sure you want to continue with this purcahse?"
+			}
+		]).then(function(userConfirmation) {
+
+			if (userConfirmation.confirm === true) {
+				connection.query("UPDATE products SET ? WHERE ?", 
+				[{
+					stock_quantity: newStockQuantity
+				},
+				{
+					id: itemId
+				}], function(err, res) {
+					if (err) {
+						throw err;
+					}
+					console.log("Your transaction has been completed. Thank you!");
+				});
+			} else {
+				console.log("Okay next time!"); 
+			}
+		});
 };
 
 
-// function purchasedItems() {
-// 	var userPrompt = {
-// 		itemID:{description: colors.cyan('Enter the ID # of the item you wish to purchase.')},
-// 		quantity:{description: colors.green('How many items would you like to purchase?')}
-// 	};
 
-// 	prompt.start();
 
-// 	prompt.get(userPrompt, function(error, response) {
 
-// 		purchasedProducts.push({itemID: response.itemID, quantity: response.quantity});
 
-// 		connection.query("SELECT * FROM products WHERE item_id = ?", purchasedProducts[0].itemID, function(error, response) {
-// 				if (error) {
-// 					console.log("There isn't an item with provided info!");
-// 				}
 
-// 				if (response[0].stock_quantity < purchasedProducts[0].quantity) {
-// 					console.log("Insufficient quantity!");	
-// 				} else if (response[0].stock_quantity >= purchasedProducts[0].quantity) {
-// 					console.log("You purchased " + purchasedProducts[0].quantity + " items.");
-				
-// 				var total = response[0].price * purchasedProducts[0].quantity;
 
-// 				connection.query("UPDATE  ")
-// 				}
-// 		});
-// 	});
-// };
 
 
 
