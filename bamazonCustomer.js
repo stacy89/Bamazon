@@ -55,11 +55,13 @@ function runProgram(){
 					runProgram();
 				} else {
 					var newStockQuantity = res[0].stock_quantity - userPurchase.quantity;
+					console.log(newStockQuantity);
 
 					var total = res[0].price * userPurchase.quantity;
 
 					console.log("You total is " + total);
-					updateItem(newStockQuantity, userPurchase.id);
+					updateItem(newStockQuantity, userPurchase.item);
+					// console.log(userPurchase.item);
 				}
 			});
 		});
