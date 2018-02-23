@@ -27,7 +27,9 @@ function showItems() {
 		}
 
 		for (var i = 0; i < data.length; i++) {
-			console.log(data[i].id, data[i].product_name, data[i].price, data[i].stock_quantity);
+			console.log("|-----------------------------------------------|");
+			console.log("         ", data[i].id, data[i].product_name, data[i].price, data[i].stock_quantity);
+			console.log("|-----------------------------------------------|");
 		}
 		runProgram();
 	});
@@ -69,27 +71,32 @@ function updateItem(newStockQuantity, itemId) {
 	inquirer
 		.prompt ([
 			{
-				name: "comfirm", 
+				name: "confirm", 
 				type: "input",
 				message: "Are you sure you want to continue with this purcahse?"
 			}
 		]).then(function(userConfirmation) {
-
-			if (userConfirmation.confirm === true) {
+			console.log(userConfirmation);
+			if (userConfirmation.confirm === "yes") {
 				connection.query("UPDATE products SET ? WHERE ?", 
 				[{
 					stock_quantity: newStockQuantity
 				},
 				{
 					id: itemId
-				}], function(err, res) {
-					if (err) {
-						throw err;
+				}], function(error, data) {
+					if (error) {
+						throw error;
 					}
+					// console.log(data);
+					console.log("===============================================");
 					console.log("Your transaction has been completed. Thank you!");
+					console.log("===============================================");
 				});
 			} else {
-				console.log("Okay next time!"); 
+				console.log("================");
+				console.log("Okay, next time!"); 
+				console.log("================");
 			}
 		});
 };
