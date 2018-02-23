@@ -1,8 +1,6 @@
 var mysql = require("mysql");
 
 var inquirer = require("inquirer");
-var color = require('colors/safe');
-
 
 var connection = mysql.createConnection({
 	host: "localhost",
@@ -76,7 +74,7 @@ function updateItem(newStockQuantity, itemId) {
 				message: "Are you sure you want to continue with this purcahse?"
 			}
 		]).then(function(userConfirmation) {
-			console.log(userConfirmation);
+			// console.log(userConfirmation);
 			if (userConfirmation.confirm === "yes") {
 				connection.query("UPDATE products SET ? WHERE ?", 
 				[{
@@ -92,11 +90,13 @@ function updateItem(newStockQuantity, itemId) {
 					console.log("===============================================");
 					console.log("Your transaction has been completed. Thank you!");
 					console.log("===============================================");
+					connection.end();
 				});
 			} else {
 				console.log("================");
 				console.log("Okay, next time!"); 
 				console.log("================");
+				connection.end();
 			}
 		});
 };

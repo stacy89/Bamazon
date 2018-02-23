@@ -8,19 +8,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Clone the repo and on your terminal where ever you want this to live and run this on the command line.
+Step 1: Clone the repo and on your terminal where ever you want it to live and run this on the command line.
 
 ```
 git clone https://github.com/stacy89/Bamazon.git
 ```
 
-Then run this to install all dependencies needed to run app
+Step 2: Then run this to install all dependencies needed to run app. Dependencies are mysql for database and inquirer for prompting users with specific questions
 
 ```
 npm install
 ```
 
-To start the app run this in the command line
+Step 3: Start the app by running this in the command line
 
 ```
 node bamazonCustomer.js
