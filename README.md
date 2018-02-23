@@ -4,9 +4,11 @@ Bamazon is a mini verison of amazon. A user can see what items are available and
 
 ## Getting Started
 Shows how you can purchase an item and ends the app after you confirm. 
+
 ![Bamazon](demoClips/BamazonClip.gif)
 
-Shows user trying to purchase more then then is in stock and ask the user to start again then if confirm is "no" then closes app.
+Shows user trying to purchase more then then is in stock and ask the user to start again then if confirm is "no" then ends app.
+
 ![Bamazon](demoClips/BamazonClip2.gif)
 
 ### Installing
