@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repo and on your terminal where ever you want this to live. Type this command.
 
 ```
-git clone [repo-you've-cloned]
+git clone https://github.com/stacy89/Bamazon.git
 ```
 
 Then run this to install all dependencies need to run app
@@ -23,7 +23,7 @@ npm install
 To start the app enter command below
 
 ```
-node [fileName.js]
+node bamazonCustomer.js
 ```
 
 ## Authors
